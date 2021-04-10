@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -19,39 +18,6 @@
 
     <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#config-web-app -->
-
-    <script>
-        // Your web app's Firebase configuration
-        var firebaseConfig = {
-            apiKey: "AIzaSyAHisFFFQyiBbhyJyqOTwS5m3BtCoEg5qc",
-            authDomain: "my-test-project-5ae76.firebaseapp.com",
-            databaseURL: "https://my-test-project-5ae76-default-rtdb.firebaseio.com/",
-            projectId: "my-test-project-5ae76",
-            storageBucket: "my-test-project-5ae76.appspot.com",
-            messagingSenderId: "302074226501",
-            appId: "1:302074226501:web:78921b21fdb124cc07c02c"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-
-        firebase.database().ref("messages").on("child_removed", function(snapshot) {
-            document.getElementById("message-" + snapshot.key).innerHTML = "This message has been deleted";
-        });
-
-        function deleteMessage(self) {
-            var messageId = self.getAttribute("data-id");
-            firebase.database().ref("messages").child(messageId).remove();
-        }
-
-        function sendMessage() {
-            var message = document.getElementById("message").value;
-            firebase.database().ref("messages").push().set({
-                "message": message,
-                "sender": myName
-            });
-            return false;
-        }
-    </script>
 
     <style>
         figure.avatar {
@@ -844,6 +810,39 @@ Bounce
 
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.3/jquery.mCustomScrollbar.concat.min.js'></script>
+    
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAHisFFFQyiBbhyJyqOTwS5m3BtCoEg5qc",
+            authDomain: "my-test-project-5ae76.firebaseapp.com",
+            databaseURL: "https://my-test-project-5ae76-default-rtdb.firebaseio.com/",
+            projectId: "my-test-project-5ae76",
+            storageBucket: "my-test-project-5ae76.appspot.com",
+            messagingSenderId: "302074226501",
+            appId: "1:302074226501:web:78921b21fdb124cc07c02c"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        firebase.database().ref("messages").on("child_removed", function(snapshot) {
+            document.getElementById("message-" + snapshot.key).innerHTML = "This message has been deleted";
+        });
+
+        function deleteMessage(self) {
+            var messageId = self.getAttribute("data-id");
+            firebase.database().ref("messages").child(messageId).remove();
+        }
+
+        function sendMessage() {
+            var message = document.getElementById("message").value;
+            firebase.database().ref("messages").push().set({
+                "message": message,
+                "sender": myName
+            });
+            return false;
+        }
+    </script>
 
     <script>
         var $messages = $('.messages-content'),
