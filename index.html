@@ -255,7 +255,7 @@ Phone Number: ${rowData.phone}`;
           ],
         };
 
-        pdfMake.createPdf(docDefinition).download("Proforma.pdf");
+        pdfMake.createPdf(docDefinition).open({}, window.open('', '_system'));
       }
 
       // Function to download text as a file
